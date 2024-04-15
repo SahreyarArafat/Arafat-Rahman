@@ -1,3 +1,25 @@
+// ========================
+document.addEventListener("DOMContentLoaded", function () {
+  window.addEventListener("scroll", function () {
+    var moveLeftElements = document.querySelectorAll(
+      ".moveLeft_scroll-element"
+    );
+
+    moveLeftElements.forEach(function (leftElement) {
+      if (isElementInViewport(leftElement)) {
+        leftElement.classList.add("scrolled");
+      }
+    });
+  });
+
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      rect.left <= window.innerWidth / 2 && rect.right >= window.innerWidth / 2
+    );
+  }
+});
+
 // the code below for the fixed navbar
 
 const nav = document.querySelector(".navbar");
@@ -105,11 +127,14 @@ function isInViewport(element) {
 
 // Function to handle scroll event
 function handleScroll() {
+  var number_box_container = document.querySelector(".number_box_container");
   const numbers = document.querySelectorAll(".number");
   numbers.forEach((number) => {
     if (isInViewport(number) && !number.classList.contains("counted")) {
       startCounting(number);
       number.classList.add("counted");
+
+      number_box_container.classList.add("scrolled");
     }
   });
 }

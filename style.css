@@ -697,7 +697,9 @@ a {
 }
 
 /* Banner is Finished */
-
+#about {
+  overflow: hidden;
+}
 .about_preview {
   padding: 80px 0;
 }
@@ -839,6 +841,10 @@ a {
   display: flex;
   align-items: center;
   border: 2px solid black;
+
+  opacity: 0;
+  transform: translateX(80px); /* Start the element slightly to the right */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .number_box_container .number_box {
@@ -1869,4 +1875,16 @@ textarea {
   line-height: 30px;
   font-weight: 600;
   color: rgb(212, 56, 28);
+}
+
+/* ====================== */
+.moveLeft_scroll-element {
+  opacity: 0;
+  transform: translateX(-80px); /* Start the element slightly to the left */
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.scrolled {
+  opacity: 1;
+  transform: translateX(0);
 }
